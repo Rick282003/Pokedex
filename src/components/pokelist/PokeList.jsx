@@ -13,7 +13,7 @@ function getPokemonIdFromUrl(url) {
 
 const PokeList = () => {
     const [offset, setOffset] = useState(0);
-    const [limit, setLimit] = useState(20);
+    const [limit, setLimit] = useState(20); //1 para pokedex final
     const {
         pokemonJsonObject,
         isLoading,
@@ -38,8 +38,8 @@ const PokeList = () => {
                                             key={id}
                                             imgUrl={imgUrl}
                                             title={p.name}
-                                            description=""
-                                            actionLabel=""
+                                            description=""//{p.name} para colocarle el nombre no en el centro
+                                            actionLabel=""//{p.name}
                                         />
                                     )
                                 }
@@ -49,7 +49,7 @@ const PokeList = () => {
                             onClick={(e)=>{
                                 e.preventDefault();
                                 e.stopPropagation();
-                                setOffset(offset + 20)
+                                setOffset(offset + 20) //1 para pokedex final
                             }}
                         >
                             Next
