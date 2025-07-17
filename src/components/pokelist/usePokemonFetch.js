@@ -1,37 +1,38 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from 'react';
 const usePokemonFetch = (
     offset = 0,
     limit = 10
 )=>{
     const [pokemonJsonObject, setPokemonJsonObject] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsloading] = useState(false);
     const [hasError, setHasError] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(null);
 
     const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        if (!isMounted) {
+
+    useEffect(()=>{
+        if( !isMounted) {
             setIsMounted(true);
             return;
         }
-        setIsLoading(true);
+        setIsloading(true);
         fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
-            .then((resp => resp.json()))
-            .then(data => {
+            .then(resp => resp.json())
+            .then( data => {
                 console.log("Returned: ", data);
-                setIsLoading(false);
-                setHasError(false);
-                setError(null);
-                setPokemonJsonObject(data);
+                    setIsloading(false);
+                    setHasError(false);
+                    setError(null);
+                    setPokemonJsonObject(data);
             })
-            .catch(err => { 
+            .catch(err=>{
                 console.error(err);
-                setIsLoading(false);
+                setIsloading(false);
                 setHasError(true);
                 setError(err);
             });
-    }, [isMounted, setIsMounted, setIsLoading, setHasError, setHasError, setPokemonJsonObject, offset, limit])
-    
+    }, [isMounted, setIsMounted, setIsloading, setHasError, setError, setPokemonJsonObject, offset, limit]);
+
     return {
         pokemonJsonObject,
         isLoading,
@@ -39,5 +40,7 @@ const usePokemonFetch = (
         error
     }
 }
+
+
 
 export default usePokemonFetch;
