@@ -1,6 +1,6 @@
 @import "tailwindcss";
 .card {
-    @apply border max-w-64 p-4 bg-amber-700;
+    @apply border max-w-64;
 }
 
 .card-header {
