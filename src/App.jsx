@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from 'react-router';
 import Home from './pages/Home';
 import Pokedex from './pages/Pokedex';
+import Pokemon from './pages/Pokemon';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={(<Home />)} />
           <Route path="/pokelist" element={(<Pokedex />)} />
+          <Route path="/pokelist/:pokemonId" element={(<Pokemon/>)} />
         </Routes>
       </main>
       <footer>

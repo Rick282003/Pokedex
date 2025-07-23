@@ -4,6 +4,8 @@ import { useState } from "react";
 import usePokemonFetch from "./usePokemonFetch";
 import Card from "../cards/Card";
 
+import { useNavigate } from "react-router";
+
 import "./Pokelist.css";
 
 function getPokemonIdFromUrl(url) {
@@ -14,6 +16,7 @@ function getPokemonIdFromUrl(url) {
 const PokeList = () => {
     const [offset, setOffset] = useState(0);
     const [limit, setLimit] = useState(20);
+    const navigateTo = useNavigate();
     const {
         pokemonJsonObject,
         isLoading,
@@ -39,7 +42,8 @@ const PokeList = () => {
                                             imgUrl={imgUrl}
                                             title={p.name}
                                             description=""
-                                            actionLabel=""
+                                            actionLabel="Go to Details"
+                                            action={()=>{navigateTo(`/pokelist/${id}`)}}
                                         />
                                     )
                                 }

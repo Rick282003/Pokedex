@@ -5,7 +5,8 @@ const Card = (
        imgUrl,
        title,
        description,
-       actionLabel
+       actionLabel,
+       action = ()=>{}
     }
 )=>{
     return (
@@ -18,7 +19,7 @@ const Card = (
                 <p>{description}</p>
             </div>
             <div className="card-footer">
-                <button>{actionLabel}</button>
+                <button onClick={()=>{action();}}>{actionLabel}</button>
             </div>
         </div>
     );
