@@ -1,4 +1,17 @@
 @import "tailwindcss";
+
 .card-holder {
-    @apply flex flex-row gap-4 flex-wrap;
+    @apply flex flex-wrap gap-6 justify-center;
+}
+
+.title {
+    @apply font-bold text-center my-8 text-4xl;
+}
+
+.pagination-buttons {
+    @apply flex justify-center gap-4 mt-6;
+}
+
+.button {
+    @apply bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed my-5;
 }

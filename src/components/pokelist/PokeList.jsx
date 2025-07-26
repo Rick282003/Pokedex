@@ -29,40 +29,54 @@ const PokeList = () => {
 
     return (
         <div className="poke-list">
-            <h2>Pokémon List</h2>
-                {!isLoading && !hasError && pokemonJsonObject?.results && (
-                    <>
-                        <section className="card-holder">
-                            {pokemonJsonObject.results.map( (p)=>{
-                                    const id = getPokemonIdFromUrl(p.url)
-                                    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-                                    return (
-                                        <Card
-                                            key={id}
-                                            imgUrl={imgUrl}
-                                            title={p.name}
-                                            description=""
-                                            actionLabel="Go to Details"
-                                            action={()=>{navigateTo(`/pokelist/${id}`)}}
-                                        />
-                                    )
-                                }
-                            )}
-                        </section>
+            <h2 className="title">Pokémon List</h2>
+            {!isLoading && !hasError && pokemonJsonObject?.results && (
+                <>
+                    <section className="card-holder">
+                        {pokemonJsonObject.results.map((p) => {
+                            const id = getPokemonIdFromUrl(p.url)
+                            const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+                            return (
+                                <Card
+                                    key={id}
+                                    imgUrl={imgUrl}
+                                    title={p.name}
+                                    description=""
+                                    actionLabel="Ver detalles"
+                                    action={() => { navigateTo(`/pokelist/${id}`) }}
+                                />
+                            )
+                        }
+                        )}
+                    </section>
+                    <div className="pagination-buttons">
                         <button
-                            onClick={(e)=>{
+                            className="button"
+                            disabled={offset === 0}
+                            onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                setOffset(offset + 20)
+                                if (offset > 0) setOffset(offset - 20);
                             }}
                         >
-                            Next
+                            Atrás
                         </button>
-                    </>
-                )}
-                {hasError && (
-                    <strong>Algo sucedió mal y no se puede cargar</strong>
-                )}
+                        <button
+                            className="button"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                setOffset(offset + 20);
+                            }}
+                        >
+                            Siguiente
+                        </button>
+                    </div>
+                </>
+            )}
+            {hasError && (
+                <strong>Algo sucedió mal y no se puede cargar</strong>
+            )}
         </div>
     )
 }

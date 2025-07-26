@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+.pokemon-detail {
+    @apply p-4;
+}
+
+.pokemon-name {
+    @apply text-2xl font-bold capitalize mb-4;
+}
+
+.divider {
+    @apply mb-4;
+}
+
+.pokemon-container {
+    @apply flex flex-col md:flex-row gap-6;
+}
+
+.pokemon-images {
+    @apply flex justify-center items-center gap-4;
+}
+
+.pokemon-images img {
+    @apply w-32 h-32;
+}
+
+.pokemon-stats {
+    @apply flex-1;
+}
+
+.stats-title {
+    @apply text-xl font-semibold mb-2;
+}
+
+.stats-list {
+    @apply space-y-2;
+}
+
+.stat-item {
+    @apply flex items-center justify-between;
+}
+
+.stat-name {
+    @apply capitalize w-24;
+}
+
+.stat-bar {
+    @apply w-full mx-4 bg-gray-200 rounded-full h-4;
+}
+
+.stat-fill {
+    @apply bg-green-500 h-4 rounded-full;
+}
+
+.stat-value {
+    @apply w-8 text-right;
+}
+
+
+.back-button {
+    @apply bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed my-5;
+}
