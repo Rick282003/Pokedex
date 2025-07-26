@@ -5,7 +5,7 @@ import "./Pokemon.css";
 
 const Pokemon = () => {
     const { pokemonId } = useParams();
-    const navigate = useNavigate(); // ← aquí usamos useNavigate
+    const navigate = useNavigate();
 
     const [pokemonData, setPokemonData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
